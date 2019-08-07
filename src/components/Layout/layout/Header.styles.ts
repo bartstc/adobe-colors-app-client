@@ -9,12 +9,12 @@ export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1em;
+  padding: 0 0.5em;
   position: fixed;
   z-index: 10;
 
   @media ${device.tablet} {
-    height: 60px;
+    padding: 0 1em;
   }
 `;
 

@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 export const color = {
   white: `#FFF`,
   black: `#151615`,
-  grey: '#B1B1B1'
+  grey: `#B1B1B1`,
+  accent: `#0075C4`
 };
 
 export const fontFamily = {

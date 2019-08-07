@@ -16,9 +16,16 @@ import {
 interface IProps {
   toggled: boolean;
   onToggle: () => void;
+  onSignUpToggle: () => void;
+  onSignInToggle: () => void;
 }
 
-export const Header: React.FC<IProps> = ({ onToggle, toggled }) => (
+export const Header: React.FC<IProps> = ({
+  onToggle,
+  onSignUpToggle,
+  onSignInToggle,
+  toggled
+}) => (
   <HeaderWrapper>
     <Logo to="/">
       <LogoTitle>Adobe Colors Clone</LogoTitle>
@@ -49,10 +56,10 @@ export const Header: React.FC<IProps> = ({ onToggle, toggled }) => (
       </NavList>
       <NavList>
         <NavItem>
-          <AuthBtn>Sign In</AuthBtn>
+          <AuthBtn onClick={onSignInToggle}>Sign In</AuthBtn>
         </NavItem>
         <NavItem>
-          <AuthBtn>Sign Up</AuthBtn>
+          <AuthBtn onClick={onSignUpToggle}>Sign Up</AuthBtn>
         </NavItem>
       </NavList>
       <SettingsBtn>

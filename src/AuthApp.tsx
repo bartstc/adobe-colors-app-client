@@ -3,8 +3,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Page from './components/Page/Page';
-import NotFound from './Pages/NotFound/NotFound';
-import { Generate } from './Pages/Generate/Generate';
+import NotFound from './pages/NotFound/NotFound';
+import { Generate } from './pages/Generate/Generate';
+import { Explore } from './pages/Explore/Explore';
+import { Library } from './pages/Library/Library';
 
 export const AuthApp: React.FC = () => (
   <BrowserRouter>
@@ -16,10 +18,28 @@ export const AuthApp: React.FC = () => (
               <Switch location={location}>
                 <Route
                   exact
+                  path="/"
+                  render={routeProps => (
+                    <Page>
+                      <Explore {...routeProps} />
+                    </Page>
+                  )}
+                />
+                <Route
+                  exact
                   path="/generate"
                   render={routeProps => (
                     <Page>
                       <Generate {...routeProps} />
+                    </Page>
+                  )}
+                />
+                <Route
+                  exact
+                  path="/library"
+                  render={routeProps => (
+                    <Page>
+                      <Library {...routeProps} />
                     </Page>
                   )}
                 />
