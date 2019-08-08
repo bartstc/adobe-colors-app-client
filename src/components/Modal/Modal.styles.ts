@@ -18,10 +18,8 @@ export const ModalWrapper = styled.div`
   z-index: 500;
   background-color: white;
   width: 92%;
-  max-width: 370px;
-  height: 72vh;
-  max-height: 380px;
-  padding: 30px 12px;
+  max-width: 450px;
+  padding: 15px 10px;
   top: 75px;
   left: calc(-50vw + 50%);
   right: calc(-50vw + 50%);
@@ -33,6 +31,7 @@ export const ModalWrapper = styled.div`
   transform: ${(props: { show: boolean }) =>
     props.show ? 'translateY(0)' : 'translateY(-100vh)'};
   opacity: ${(props: { show: boolean }) => (props.show ? '1' : '0')};
+  border-radius: 20px;
 
   &::-webkit-scrollbar {
     width: 0 !important;
@@ -40,6 +39,5 @@ export const ModalWrapper = styled.div`
 
   @media ${device.tablet} {
     top: 95px;
-    padding-top: 30px;
   }
 `;

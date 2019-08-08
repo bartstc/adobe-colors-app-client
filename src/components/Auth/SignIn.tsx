@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  AuthForm,
-  Title,
-  Subtitle,
-  ModalWrapper,
-  Backdrop
-} from './Auth.styles';
+import { AuthForm, Title, Subtitle } from './Auth.styles';
 import { useForm } from '../../hooks/useForm';
 import { useAuthDispatch } from '../../context/authContext';
 import { setToken } from '../../utils/setToken';
@@ -13,6 +7,7 @@ import { setToken } from '../../utils/setToken';
 import { TextInputField } from '../../components/TextInputField/TextInputField';
 import { Button } from '../../components/Button/Button';
 import { IProps } from './Auth.interface';
+import { Modal } from '../Modal/Modal';
 
 const initState = {
   email: '',
@@ -40,32 +35,29 @@ export const SignIn: React.FC<IProps> = ({ onClose, show }) => {
   };
 
   return (
-    <>
-      <Backdrop show={show} onClick={onClose} />
-      <ModalWrapper show={show}>
-        <AuthForm onSubmit={handleSubmit}>
-          <Title>Sign In</Title>
-          <Subtitle>Sign into your account here.</Subtitle>
-          <TextInputField
-            label="Enter email"
-            placeholder=""
-            id="email"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-          />
-          <TextInputField
-            label="Enter password"
-            placeholder=""
-            id="password"
-            name="password"
-            type="password"
-            value={values.password}
-            onChange={handleChange}
-          />
-          <Button type="submit">Sign Up</Button>
-        </AuthForm>
-      </ModalWrapper>
-    </>
+    <Modal show={show} closeModal={onClose}>
+      <AuthForm onSubmit={handleSubmit}>
+        <Title>Sign In</Title>
+        <Subtitle>Sign into your account here.</Subtitle>
+        <TextInputField
+          label="Enter email"
+          placeholder=""
+          id="email"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
+        />
+        <TextInputField
+          label="Enter password"
+          placeholder=""
+          id="password"
+          name="password"
+          type="password"
+          value={values.password}
+          onChange={handleChange}
+        />
+        <Button type="submit">Sign Up</Button>
+      </AuthForm>
+    </Modal>
   );
 };
