@@ -1,30 +1,8 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { setToken } from '../../../utils/setToken';
 import { useAuthDispatch } from '../../../context/authContext';
 import { Links, Wrapper, Link, Btn } from './SideDrawer.styles';
-
-const authLinks = [
-  {
-    path: '/generate',
-    name: 'Generate'
-  }
-];
-
-const unauthLinks = [
-  {
-    path: '/generate',
-    name: 'Generate'
-  },
-  {
-    path: '/',
-    name: 'Explore'
-  },
-  {
-    path: '/library',
-    name: 'Library'
-  }
-];
+import { authLinks, unauthLinks } from '../../../utils/links';
 
 interface IProps extends RouteComponentProps<any> {
   toggle: boolean;
@@ -42,11 +20,10 @@ const SideDrawer: React.FC<IProps> = ({
   onSignUpToggle,
   onSignInToggle
 }) => {
-  const { dispatch } = useAuthDispatch();
+  const dispatch = useAuthDispatch();
 
   const onLogout = async () => {
     localStorage.removeItem('jwtToken');
-    setToken(); // clear axios headers
     dispatch({ type: 'LOGOUT_USER' });
     history.push('/');
   };
@@ -65,9 +42,9 @@ const SideDrawer: React.FC<IProps> = ({
                 {name}
               </Link>
             ))}
+        {!isAuth && <Btn onClick={onSignInToggle}>Sign In</Btn>}
+        {!isAuth && <Btn onClick={onSignUpToggle}>Sign Up</Btn>}
         {isAuth && <Btn onClick={onLogout}>Logout</Btn>}
-        <Btn onClick={onSignInToggle}>Sign In</Btn>
-        <Btn onClick={onSignUpToggle}>Sign Up</Btn>
         <Btn>Settings</Btn>
       </Links>
     </Wrapper>

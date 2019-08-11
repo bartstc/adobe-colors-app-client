@@ -6,10 +6,9 @@ import Page from './components/Page/Page';
 import NotFound from './pages/NotFound/NotFound';
 import { Generate } from './pages/Generate/Generate';
 import { Explore } from './pages/Explore/Explore';
-import { Library } from './pages/Library/Library';
 import { Details } from './pages/Details/Details';
 
-const AuthApp: React.FC = () => (
+const UnauthApp: React.FC = () => (
   <BrowserRouter>
     <Layout>
       <Route
@@ -37,15 +36,6 @@ const AuthApp: React.FC = () => (
                 />
                 <Route
                   exact
-                  path="/library"
-                  render={routeProps => (
-                    <Page>
-                      <Library {...routeProps} />
-                    </Page>
-                  )}
-                />
-                <Route
-                  exact
                   path="/palette/:id"
                   render={routeProps => (
                     <Page>
@@ -63,4 +53,4 @@ const AuthApp: React.FC = () => (
   </BrowserRouter>
 );
 
-export default AuthApp;
+export default UnauthApp;

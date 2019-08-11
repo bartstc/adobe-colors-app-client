@@ -3,7 +3,7 @@ import { useToggle } from '../../hooks/useToggle';
 import { LayoutWrapper, Main } from './Layout.styles';
 import { useAuthState } from '../../context/authContext';
 
-import { Header } from './layout/Header';
+import Header from './layout/Header';
 import SideDrawer from './layout/SideDrawer';
 import { SignUp } from '../Auth/SignUp';
 import { SignIn } from '../Auth/SignIn';

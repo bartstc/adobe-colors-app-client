@@ -7,7 +7,7 @@ export const Label = styled.label`
   font-weight: 300;
   margin-bottom: 0.4em;
   width: 100%;
-  margin-top: 1.5em;
+  margin-top: 1.2em;
 `;
 
 export const Input = styled.input`

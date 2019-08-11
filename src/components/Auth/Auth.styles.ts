@@ -16,7 +16,7 @@ export const AuthForm = styled.form`
 `;
 
 export const Title = styled.h2`
-  font-size: 1.6rem;
+  font-size: 1.45rem;
   font-weight: 300;
   border-bottom: 1px solid ${color.black};
   line-height: 2em;
@@ -32,7 +32,7 @@ export const Subtitle = styled.p`
   margin-top: 0.7em;
   font-size: 0.9rem;
   line-height: 1em;
-  margin-bottom: 1.4em;
+  margin-bottom: 0.8em;
   text-align: center;
   max-width: 280px;
 

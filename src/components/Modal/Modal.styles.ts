@@ -9,8 +9,8 @@ export const Backdrop = styled.div`
   z-index: 20;
   left: 0;
   top: 0;
-  background: ${color.grey};
-  opacity: 0.25;
+  background: ${color.white};
+  opacity: 0.65;
 `;
 
 export const ModalWrapper = styled.div`
@@ -19,8 +19,8 @@ export const ModalWrapper = styled.div`
   background-color: white;
   width: 92%;
   max-width: 450px;
-  padding: 15px 10px;
-  top: 75px;
+  padding: 10px;
+  top: 35px;
   left: calc(-50vw + 50%);
   right: calc(-50vw + 50%);
   margin-left: auto;
@@ -31,6 +31,7 @@ export const ModalWrapper = styled.div`
   transform: ${(props: { show: boolean }) =>
     props.show ? 'translateY(0)' : 'translateY(-100vh)'};
   opacity: ${(props: { show: boolean }) => (props.show ? '1' : '0')};
+  box-shadow: 6px 6px 20px -5px rgba(185, 185, 185, 1);
   border-radius: 20px;
 
   &::-webkit-scrollbar {

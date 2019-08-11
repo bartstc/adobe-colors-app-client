@@ -3,19 +3,20 @@ import { color } from '../../utils/styles';
 
 export const Loader = styled.span`
   display: block;
-  width: 90px;
-  height: 90px;
+  width: 50px;
+  height: 50px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 2em;
 
   &:after {
     content: ' ';
     display: block;
     margin: 0 auto;
-    width: 50px;
-    height: 50px;
+    width: 28px;
+    height: 28px;
     margin: 1px;
     border-radius: 50%;
     border: 5px solid ${color.black};

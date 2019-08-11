@@ -1,6 +1,5 @@
 import React, { createContext, useReducer, useContext, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
-import { setToken } from '../utils/setToken';
 
 interface IState {
   isAuth: boolean | null;
@@ -28,10 +27,7 @@ const initState: IState = {
   username: ''
 };
 
-const authReducer: React.Reducer<IState, IAction> = (
-  state,
-  { type, payload }
-) => {
+const authReducer: React.Reducer<IState, IAction> = (_, { type, payload }) => {
   switch (type) {
     case 'SET_USER':
       return {
@@ -43,8 +39,8 @@ const authReducer: React.Reducer<IState, IAction> = (
     case 'LOGOUT_USER':
       return {
         isAuth: false,
-        id: null,
-        username: null
+        id: '',
+        username: ''
       };
 
     default: {
@@ -65,29 +61,21 @@ const AuthProvider = ({ children }: ProviderProps) => {
 
   useEffect(() => {
     if (localStorage.jwtToken) {
-      // run getCurrentUser
+      getCurrentUser();
       const decoded: { exp: number } = jwt_decode(localStorage.jwtToken);
       const currentTime = Date.now() / 1000;
 
       if (decoded.exp < currentTime) {
-        // Logout user
         dispatch({ type: 'LOGOUT_USER' });
-        // Remove token from localStorage
         localStorage.removeItem('jwtToken');
-        // Unset axios headers
-        setHeaders();
-        // Redirect to signin
-        window.location.href = '/signin';
+        // window.location.href = '/signin';
       } else {
-        // Set axios headers
-        setHeaders(localStorage.jwtToken);
-        // Get current user data
         getCurrentUser();
       }
-    } else dispatch({ type: 'LOGOUT_USER' });
+    } else {
+      dispatch({ type: 'LOGOUT_USER' });
+    }
   }, []);
-
-  const setHeaders = async (token?: string) => await setToken(token);
 
   const getCurrentUser = async () => {
     console.log('Get current user');
@@ -116,15 +104,11 @@ const AuthProvider = ({ children }: ProviderProps) => {
 
 const useAuthState = () => {
   const state = useContext<IState>(AuthStateContext);
-  if (state === undefined)
-    throw new Error('useAuthState must be used within a AuthProvider');
   return state;
 };
 
 const useAuthDispatch = () => {
-  const dispatch = useContext(AuthDispatchContext);
-  if (dispatch === undefined)
-    throw new Error('useAuthDispatch must be used within a AuthProvider');
+  const { dispatch } = useContext(AuthDispatchContext);
   return dispatch;
 };
 
