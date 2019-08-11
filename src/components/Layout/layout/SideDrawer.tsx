@@ -1,12 +1,11 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { useAuthDispatch } from '../../../context/authContext';
+import { useAuthDispatch, useAuthState } from '../../../context/authContext';
 import { Links, Wrapper, Link, Btn } from './SideDrawer.styles';
 import { authLinks, unauthLinks } from '../../../utils/links';
 
 interface IProps extends RouteComponentProps<any> {
   toggle: boolean;
-  isAuth: boolean | null;
   onClose: () => void;
   onSignUpToggle: () => void;
   onSignInToggle: () => void;
@@ -14,13 +13,13 @@ interface IProps extends RouteComponentProps<any> {
 
 const SideDrawer: React.FC<IProps> = ({
   toggle,
-  isAuth,
   onClose,
   history,
   onSignUpToggle,
   onSignInToggle
 }) => {
   const dispatch = useAuthDispatch();
+  const { isAuth } = useAuthState();
 
   const onLogout = async () => {
     localStorage.removeItem('jwtToken');

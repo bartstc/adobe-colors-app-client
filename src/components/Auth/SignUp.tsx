@@ -32,9 +32,7 @@ export const SignUp: React.FC<IProps> = ({ onClose, show }) => {
   };
 
   const [signUp, { loading }] = useMutation(SIGNUP_USER, {
-    update(_, result) {
-      console.log(result);
-
+    update(_, __) {
       reset();
       onClose();
       handlePopup('User registered successfully');
@@ -70,7 +68,7 @@ export const SignUp: React.FC<IProps> = ({ onClose, show }) => {
           <TextInputField
             label="Enter username"
             placeholder=""
-            id="username"
+            id="signup-username"
             name="username"
             value={values.username}
             onChange={handleChange}
@@ -79,7 +77,7 @@ export const SignUp: React.FC<IProps> = ({ onClose, show }) => {
           <TextInputField
             label="Enter email"
             placeholder=""
-            id="email"
+            id="signup-email"
             name="email"
             value={values.email}
             onChange={handleChange}
@@ -88,7 +86,7 @@ export const SignUp: React.FC<IProps> = ({ onClose, show }) => {
           <TextInputField
             label="Enter password"
             placeholder=""
-            id="password"
+            id="signup-password"
             name="password"
             type="password"
             value={values.password}

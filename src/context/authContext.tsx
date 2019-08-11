@@ -61,37 +61,20 @@ const AuthProvider = ({ children }: ProviderProps) => {
 
   useEffect(() => {
     if (localStorage.jwtToken) {
-      getCurrentUser();
       const decoded: { exp: number } = jwt_decode(localStorage.jwtToken);
       const currentTime = Date.now() / 1000;
 
       if (decoded.exp < currentTime) {
         dispatch({ type: 'LOGOUT_USER' });
         localStorage.removeItem('jwtToken');
-        // window.location.href = '/signin';
+        // window.location.href = '/';
       } else {
-        getCurrentUser();
+        dispatch({ type: 'SET_USER', payload: decoded });
       }
     } else {
       dispatch({ type: 'LOGOUT_USER' });
     }
   }, []);
-
-  const getCurrentUser = async () => {
-    console.log('Get current user');
-    // try {
-    //   const { data } = await axios.get('/auth');
-    //   dispatch({ type: 'SET_USER', payload: data });
-    // } catch (err) {
-    //   dispatch({
-    //     type: 'SET_USER',
-    //     payload: {
-    //       id: null,
-    //       username: null
-    //     }
-    //   });
-    // }
-  };
 
   return (
     <AuthStateContext.Provider value={state}>

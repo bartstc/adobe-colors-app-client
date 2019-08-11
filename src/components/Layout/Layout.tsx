@@ -31,11 +31,10 @@ export const Layout: React.FC<IProps> = ({ children }) => {
         onSignInToggle={setSignIn}
         toggled={toggle}
       />
-      <SignUp show={showSignUp} onClose={setSignUp} />
-      <SignIn show={showSignIn} onClose={setSignIn} />
+      {!isAuth && <SignUp show={showSignUp} onClose={setSignUp} />}
+      {!isAuth && <SignIn show={showSignIn} onClose={setSignIn} />}
       <SideDrawer
         toggle={toggle}
-        isAuth={isAuth}
         onClose={onClose}
         onSignUpToggle={setSignUp}
         onSignInToggle={setSignIn}

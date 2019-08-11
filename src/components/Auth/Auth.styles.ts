@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device, color } from '../../utils/styles';
+import { device, color, fontWeight } from '../../utils/styles';
 
 export const AuthForm = styled.form`
   display: flex;
@@ -17,7 +17,7 @@ export const AuthForm = styled.form`
 
 export const Title = styled.h2`
   font-size: 1.45rem;
-  font-weight: 300;
+  font-weight: ${fontWeight.semiBold};
   border-bottom: 1px solid ${color.black};
   line-height: 2em;
   width: 100%;
