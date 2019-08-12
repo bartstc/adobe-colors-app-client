@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Wrapper, Color, ColorName } from './PaletteColor.styles';
 import { SliderPicker } from 'react-color';
+import { randomColor } from '../../../utils/randomColor';
+import { usePaletteDispatch } from '../../../context/paletteContext';
 
-export const PaletteColor: React.FC = () => {
+interface IColorObject {
+  hex: string;
+}
+
+interface IProps {
+  id: number;
+}
+
+export const PaletteColor: React.FC<IProps> = ({ id }) => {
+  const dispatch = usePaletteDispatch();
+  const [color, setColor] = useState(randomColor());
+
+  useEffect(() => {
+    dispatch({ type: 'UPDATE_PALETTE', payload: { id, color } });
+  }, [id, color, dispatch]);
+
+  const handleChangeComplete = (color: IColorObject) => {
+    setColor(color.hex);
+    dispatch({ type: 'UPDATE_PALETTE', payload: { id, color: color.hex } });
+  };
+
   return (
     <Wrapper>
-      <Color>
-        <ColorName color="#333333">#444444</ColorName>
+      <Color color={color}>
+        <ColorName color={color}>{color.toUpperCase()}</ColorName>
       </Color>
-      <SliderPicker />
+      <SliderPicker color={color} onChangeComplete={handleChangeComplete} />
     </Wrapper>
   );
 };

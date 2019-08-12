@@ -7,6 +7,7 @@ import { ApolloProvider } from 'react-apollo';
 import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks';
 import { AuthProvider, useAuthState } from './context/authContext';
 import { Spinner } from './components/Spinner/Spinner';
+import { PaletteProvider } from './context/paletteContext';
 
 const AuthApp = lazy(() => import('./AuthApp'));
 const UnauthApp = lazy(() => import('./UnauthApp'));
@@ -32,7 +33,9 @@ const Index: React.FC = () => {
 
 ReactDOM.render(
   <AuthProvider>
-    <Index />
+    <PaletteProvider>
+      <Index />
+    </PaletteProvider>
   </AuthProvider>,
   document.getElementById('root')
 );

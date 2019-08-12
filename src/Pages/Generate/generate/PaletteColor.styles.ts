@@ -11,7 +11,7 @@ export const Wrapper = styled.li`
 `;
 
 export const Color = styled.div`
-  background: blue;
+  background: ${(props: { color: string }) => props.color};
   height: 160px;
   margin-bottom: 1em;
   display: flex;
