@@ -7,9 +7,10 @@ import { Button } from '../../components/Button/Button';
 import { IProps } from './Auth.interface';
 import { Modal } from '../Modal/Modal';
 import { useMutation } from '@apollo/react-hooks';
-import { SIGNIN_USER } from './mutations';
+import { SIGNIN } from './mutations';
 import { Spinner } from '../Spinner/Spinner';
 import { validationErrors } from '../../utils/validationErrors';
+import { Signin, SigninVariables } from '../../schema/Signin';
 
 const initState = {
   email: '',
@@ -21,26 +22,25 @@ export const SignIn: React.FC<IProps> = ({ onClose, show }) => {
   const [errors, setErrors] = useState([]);
 
   const { handleChange, handleSubmit, reset, values } = useForm(() => {
-    onSubmit();
-  }, initState);
-
-  const onSubmit = () => {
     setErrors([]);
     signIn();
-  };
+  }, initState);
 
-  const [signIn, { loading }] = useMutation(SIGNIN_USER, {
-    update(_, result) {
-      localStorage.setItem('jwtToken', result.data.signin.token);
+  const [signIn, { loading }] = useMutation<Signin, SigninVariables>(SIGNIN, {
+    update(_, { data }) {
+      localStorage.setItem('jwtToken', data.signin.token);
       reset();
       onClose();
-      dispatch({ type: 'SET_USER', payload: result.data.signin });
+      dispatch({ type: 'SET_USER', payload: data.signin });
     },
     onError(err: any) {
       if (err.graphQLErrors[0].extensions.exception.errorFields)
         setErrors(err.graphQLErrors[0].extensions.exception.errorFields);
     },
-    variables: values
+    variables: {
+      email: values.email,
+      password: values.password
+    }
   });
 
   const onCloseModal = () => {

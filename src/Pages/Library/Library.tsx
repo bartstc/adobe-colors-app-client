@@ -31,14 +31,14 @@ export const Library: React.FC<IProps> = () => {
       <ListWrapper>
         <ListTitle>Created</ListTitle>
         <Palettes>
+          {/* <Palette />
           <Palette />
           <Palette />
           <Palette />
           <Palette />
           <Palette />
           <Palette />
-          <Palette />
-          <Palette />
+          <Palette /> */}
         </Palettes>
       </ListWrapper>
     </Wrapper>

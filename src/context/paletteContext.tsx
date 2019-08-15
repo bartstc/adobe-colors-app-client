@@ -1,7 +1,9 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 interface IState {
-  [key: number]: string;
+  colors: {
+    [key: number]: string;
+  };
 }
 
 interface IAction {
@@ -18,7 +20,9 @@ const PaletteDispatchContext = createContext<IDispatchContext>(
   {} as IDispatchContext
 );
 
-const initState: IState = {};
+const initState: IState = {
+  colors: {}
+};
 
 const paletteReducer: React.Reducer<IState, IAction> = (
   state,
@@ -26,11 +30,11 @@ const paletteReducer: React.Reducer<IState, IAction> = (
 ) => {
   switch (type) {
     case 'UPDATE_PALETTE':
-      const updatedPalette = { ...state };
+      const updatedPalette = { ...state.colors };
       updatedPalette[payload.id] = payload.color;
 
       return {
-        ...updatedPalette
+        colors: updatedPalette
       };
 
     default: {

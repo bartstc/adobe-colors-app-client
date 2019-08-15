@@ -6,10 +6,11 @@ import { Button } from '../../components/Button/Button';
 import { IProps } from './Auth.interface';
 import { Modal } from '../Modal/Modal';
 import { useMutation } from '@apollo/react-hooks';
-import { SIGNUP_USER } from './mutations';
+import { SIGNUP } from './mutations';
 import { validationErrors } from '../../utils/validationErrors';
 import { Spinner } from '../Spinner/Spinner';
 import { Popup } from '../Popup/Popup';
+import { Signup, SignupVariables } from '../../schema/Signup';
 
 const initState = {
   username: '',
@@ -31,7 +32,7 @@ export const SignUp: React.FC<IProps> = ({ onClose, show }) => {
     signUp();
   };
 
-  const [signUp, { loading }] = useMutation(SIGNUP_USER, {
+  const [signUp, { loading }] = useMutation<Signup, SignupVariables>(SIGNUP, {
     update(_, __) {
       reset();
       onClose();
@@ -41,7 +42,11 @@ export const SignUp: React.FC<IProps> = ({ onClose, show }) => {
       if (err.graphQLErrors[0].extensions.exception.errorFields)
         setErrors(err.graphQLErrors[0].extensions.exception.errorFields);
     },
-    variables: values
+    variables: {
+      email: values.email,
+      password: values.password,
+      username: values.username
+    }
   });
 
   const onCloseModal = () => {

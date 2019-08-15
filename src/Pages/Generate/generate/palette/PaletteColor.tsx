@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Wrapper, Color, ColorName } from './PaletteColor.styles';
 import { SliderPicker } from 'react-color';
-import { randomColor } from '../../../utils/randomColor';
-import { usePaletteDispatch } from '../../../context/paletteContext';
+import { randomColor } from '../../../../utils/randomColor';
+import { usePaletteDispatch } from '../../../../context/paletteContext';
 
 interface IColorObject {
   hex: string;

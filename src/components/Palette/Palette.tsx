@@ -12,19 +12,29 @@ import {
   ActionBtn
 } from './Palette.styles';
 
-export const Palette: React.FC = () => {
+interface IProps {
+  id: string;
+  name: string;
+  colors: string[];
+  tags: string;
+  ownerusername: string;
+  saves: number;
+  views: number;
+}
+
+export const Palette: React.FC<IProps> = ({ name, colors, saves, views }) => {
   return (
     <Wrapper>
       <PaletteHeader>
-        <PaletteTitle>Palette title</PaletteTitle>
+        <PaletteTitle>{name}</PaletteTitle>
         <PaletteInfo>
           <Info>
             <i className="fas fa-cloud-download-alt" />
-            <InfoText>5</InfoText>
+            <InfoText>{saves}</InfoText>
           </Info>
           <Info>
             <i className="fas fa-eye" />
-            <InfoText>23</InfoText>
+            <InfoText>{views}</InfoText>
           </Info>
         </PaletteInfo>
       </PaletteHeader>
@@ -39,11 +49,9 @@ export const Palette: React.FC = () => {
             Save
           </ActionBtn>
         </ActionPanel>
-        <Color />
-        <Color />
-        <Color />
-        <Color />
-        <Color />
+        {colors.map(color => (
+          <Color color={color} />
+        ))}
       </Colors>
     </Wrapper>
   );

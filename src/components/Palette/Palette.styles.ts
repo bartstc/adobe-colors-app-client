@@ -45,7 +45,7 @@ export const ActionPanel = styled.div`
   transition: opacity 0.15s ease-in-out;
 `;
 
-export const Colors = styled.ul`
+export const Colors = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -58,8 +58,8 @@ export const Colors = styled.ul`
   }
 `;
 
-export const Color = styled.li`
-  background: red;
+export const Color = styled.div`
+  background: ${(props: { color: string }) => props.color};
 `;
 
 export const ActionBtn = styled.button`

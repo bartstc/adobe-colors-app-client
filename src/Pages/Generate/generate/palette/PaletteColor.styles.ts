@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import chroma from 'chroma-js';
-import { device, color } from '../../../utils/styles';
+import { device, color } from '../../../../utils/styles';
 
 export const Wrapper = styled.li`
   height: 240px;
