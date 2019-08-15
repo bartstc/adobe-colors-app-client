@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device } from '../../../utils/styles';
+import { device, color } from '../../../utils/styles';
 
 export const Palettes = styled.ul`
   padding: 0 0.5em;
@@ -28,5 +28,14 @@ export const Palettes = styled.ul`
     max-width: 1400px;
     margin: 0 auto;
     grid-template-columns: repeat(4, 1fr);
+  }
+`;
+
+export const Warning = styled.p`
+  font-size: 0.9rem;
+  color: ${color.grey};
+
+  @media ${device.tablet} {
+    font-size: 1rem;
   }
 `;

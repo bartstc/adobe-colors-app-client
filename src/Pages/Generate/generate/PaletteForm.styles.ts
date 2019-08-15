@@ -87,6 +87,7 @@ export const SubmitBtn = styled.button`
   border: 1px solid ${color.black};
   border-radius: 20px;
   margin-top: 0.9em;
+  cursor: pointer;
 
   p {
     margin-left: 0.4em;

@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { Form, Label, Input, SubmitBtn } from './SearchForm.styles';
+import { Form, Label, Input } from './SearchForm.styles';
 
 interface IProps {
   value: string;
@@ -16,8 +16,5 @@ export const SearchForm: React.FC<IProps> = ({ value, handleChange }) => (
       value={value}
       onChange={handleChange}
     />
-    <SubmitBtn type="submit">
-      <i className="fas fa-search" />
-    </SubmitBtn>
   </Form>
 );

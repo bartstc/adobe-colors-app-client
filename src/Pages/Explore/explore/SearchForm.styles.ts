@@ -38,20 +38,20 @@ export const Input = styled.input`
   }
 `;
 
-export const SubmitBtn = styled.button`
-  display: flex;
-  align-items: center;
-  padding: 0.4em;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  margin-left: 0.4em;
+// export const SubmitBtn = styled.button`
+//   display: flex;
+//   align-items: center;
+//   padding: 0.4em;
+//   background: none;
+//   border: none;
+//   font-size: 1.2rem;
+//   margin-left: 0.4em;
 
-  @media ${device.tablet} {
-    margin-top: 0;
-  }
+//   @media ${device.tablet} {
+//     margin-top: 0;
+//   }
 
-  @media ${device.laptop} {
-    margin-left: 0.9em;
-  }
-`;
+//   @media ${device.laptop} {
+//     margin-left: 0.9em;
+//   }
+// `;

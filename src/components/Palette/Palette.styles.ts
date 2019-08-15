@@ -7,7 +7,7 @@ export const PaletteHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 0.8em;
+  padding-bottom: 0.6em;
 `;
 
 export const PaletteTitle = styled.h2`
@@ -49,7 +49,7 @@ export const Colors = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  height: 60px;
+  height: 45px;
   border-radius: 10px;
   overflow: hidden;
 

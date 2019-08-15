@@ -49,8 +49,8 @@ export const Palette: React.FC<IProps> = ({ name, colors, saves, views }) => {
             Save
           </ActionBtn>
         </ActionPanel>
-        {colors.map(color => (
-          <Color color={color} />
+        {colors.map((color, id) => (
+          <Color key={id} color={color} />
         ))}
       </Colors>
     </Wrapper>

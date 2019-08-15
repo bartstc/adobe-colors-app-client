@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Panel,
   PanelTitle,
@@ -12,16 +12,16 @@ import { useMutation } from '@apollo/react-hooks';
 import { usePaletteState } from '../../../context/paletteContext';
 import { Popup } from '../../../components/Popup/Popup';
 import { useAuthState } from '../../../context/authContext';
-import { CREATE_PALETTE } from './mutations';
+import { CREATE_PALETTE } from '../mutations';
 import { useForm } from '../../../hooks/useForm';
 import {
   CreatePalette,
   CreatePaletteVariables
 } from '../../../schema/CreatePalette';
+import { usePopup } from '../../../hooks/usePopup';
 
 export const PaletteForm: React.FC = () => {
-  const [show, setShow] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  const { handlePopup, show, errorMsg } = usePopup();
   const state = usePaletteState();
   const { isAuth } = useAuthState();
 
@@ -63,15 +63,6 @@ export const PaletteForm: React.FC = () => {
       }
     }
   );
-
-  const handlePopup = (message: string) => {
-    setShow(true);
-    setErrorMsg(message);
-    setTimeout(() => {
-      setShow(false);
-      setErrorMsg('');
-    }, 4000);
-  };
 
   return (
     <>
