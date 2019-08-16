@@ -45,29 +45,18 @@ export const PanelContent = styled.div`
   }
 `;
 
-export const Links = styled.nav`
+export const Actions = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 0.5em;
-  width: 280px;
+  width: 300px;
 
   @media ${device.tablet} {
     margin-top: 0;
-    width: 260px;
+    width: 330px;
     padding-left: 0.8em;
     margin-left: 1.2em;
     border-left: 1px solid ${color.grey};
   }
-`;
-
-export const Filter = styled.button`
-  line-height: 2rem;
-  font-size: 1.1rem;
-  font-weight: ${fontWeight.semiBold};
-  color: ${color.grey};
-  background: none;
-  border: none;
-  padding: 0 0.8em;
-  cursor: pointer;
 `;

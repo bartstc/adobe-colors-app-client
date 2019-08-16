@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device, color } from '../../../utils/styles';
+import { device, color } from '../../utils/styles';
 
 export const Palettes = styled.ul`
   padding: 0 0.5em;

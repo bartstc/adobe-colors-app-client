@@ -6,7 +6,6 @@ interface IState {
     [key: number]: string;
   };
   palettes: IPalette[];
-  loading: boolean;
 }
 
 interface IAction {
@@ -25,8 +24,7 @@ const PaletteDispatchContext = createContext<IDispatchContext>(
 
 const initState: IState = {
   colors: {},
-  palettes: [],
-  loading: true
+  palettes: []
 };
 
 const paletteReducer: React.Reducer<IState, IAction> = (
@@ -44,20 +42,9 @@ const paletteReducer: React.Reducer<IState, IAction> = (
       };
 
     case 'SET_PALETTES':
-      const { data, loading } = payload;
-      let palettes;
-      if (!data) palettes = [];
-
-      // The data can be three diffrent arrays of palettes depending on the query
-      if (data && data.getAllPalettes) palettes = data.getAllPalettes;
-      if (data && data.getBestPalettes) palettes = data.getBestPalettes;
-      if (data && data.getPicksPalettes) palettes = data.getPicksPalettes;
-      if (data && data.searchPalettes) palettes = data.searchPalettes;
-
       return {
         ...state,
-        palettes,
-        loading
+        palettes: payload.palettes
       };
 
     case 'LOADING':

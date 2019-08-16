@@ -11,4 +11,5 @@ export interface IPalette {
 export interface IPaletteVariables {
   limit: number;
   offset: number;
+  query?: string;
 }
