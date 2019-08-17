@@ -5,8 +5,8 @@ interface IProps {
   children: JSX.Element;
 }
 
-const Page: React.FC<IProps> = ({ children }) => {
-  return <PageWrapper>{children}</PageWrapper>;
-};
+const Page: React.FC<IProps> = ({ children }) => (
+  <PageWrapper>{children}</PageWrapper>
+);
 
 export default Page;

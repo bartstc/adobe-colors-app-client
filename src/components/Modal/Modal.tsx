@@ -7,22 +7,9 @@ interface IProps {
   show: boolean;
 }
 
-export const Modal: React.FC<IProps> = ({ closeModal, show, children }) => {
-  // const [showPopup, setShowPopup] = useState(false);
-  // const [errorMsg, setErrorMsg] = useState(null);
-
-  // const handlePopup = () => {
-  //   setShowPopup(true);
-  //   setTimeout(() => {
-  //     setShowPopup(false);
-  //   }, 3000);
-  // };
-
-  return (
-    <>
-      {/* <Popup show={showPopup} message={errorMsg} /> */}
-      <Backdrop show={show} onClick={closeModal} />
-      <ModalWrapper show={show}>{children}</ModalWrapper>
-    </>
-  );
-};
+export const Modal: React.FC<IProps> = ({ closeModal, show, children }) => (
+  <>
+    <Backdrop show={show} onClick={closeModal} />
+    <ModalWrapper show={show}>{children}</ModalWrapper>
+  </>
+);

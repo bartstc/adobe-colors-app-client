@@ -6,7 +6,7 @@ import Page from './components/Page/Page';
 import NotFound from './pages/NotFound/NotFound';
 import { Generate } from './pages/Generate/Generate';
 import { Explore } from './pages/Explore/Explore';
-import { Details } from './pages/Details/Details';
+import { DetailsPage } from './pages/DetailsPage/DetailsPage';
 
 const UnauthApp: React.FC = () => (
   <BrowserRouter>
@@ -39,7 +39,7 @@ const UnauthApp: React.FC = () => (
                   path="/palette/:id"
                   render={routeProps => (
                     <Page>
-                      <Details {...routeProps} />
+                      <DetailsPage {...routeProps} />
                     </Page>
                   )}
                 />

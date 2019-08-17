@@ -1,4 +1,6 @@
 import React from 'react';
+import { useMutation } from '@apollo/react-hooks';
+
 import {
   Panel,
   PanelTitle,
@@ -8,7 +10,6 @@ import {
   InputGroup,
   SubmitBtn
 } from './PaletteForm.styles';
-import { useMutation } from '@apollo/react-hooks';
 import { usePaletteState } from '../../../context/paletteContext';
 import { Popup } from '../../../components/Popup/Popup';
 import { useAuthState } from '../../../context/authContext';
@@ -38,6 +39,11 @@ export const PaletteForm: React.FC = () => {
 
     if (values.name.length < 2) {
       handlePopup('Name must be at least 2 characters');
+      return;
+    }
+
+    if (values.name.length > 20) {
+      handlePopup('Palette name too long (max 20)');
       return;
     }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ApolloQueryResult } from 'apollo-client';
+
 import { Palettes, Warning } from './PaletteList.styles';
 import { Palette } from '../Palette/Palette';
 import { Spinner } from '../Spinner/Spinner';

@@ -1,8 +1,8 @@
 import React from 'react';
+
 import { useToggle } from '../../hooks/useToggle';
 import { LayoutWrapper, Main } from './Layout.styles';
 import { useAuthState } from '../../context/authContext';
-
 import Header from './layout/Header';
 import SideDrawer from './layout/SideDrawer';
 import { SignUp } from '../Auth/SignUp';

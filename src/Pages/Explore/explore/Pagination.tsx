@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { PageBtn } from './Pagination.styles';
 import { usePaletteState } from '../../../context/paletteContext';
 

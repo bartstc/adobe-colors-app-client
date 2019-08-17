@@ -1,4 +1,6 @@
 import React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+
 import {
   HeaderWrapper,
   Logo,
@@ -12,7 +14,6 @@ import {
   AuthBtn,
   SettingsBtn
 } from './Header.styles';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { authLinks, unauthLinks } from '../../../utils/links';
 import { useAuthDispatch, useAuthState } from '../../../context/authContext';
 

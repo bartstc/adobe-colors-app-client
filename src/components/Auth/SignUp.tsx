@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+
 import { AuthForm, Title, Subtitle } from './Auth.styles';
 import { useForm } from '../../hooks/useForm';
 import { TextInputField } from '../../components/TextInputField/TextInputField';
 import { Button } from '../../components/Button/Button';
 import { IProps } from './Auth.interface';
 import { Modal } from '../Modal/Modal';
-import { useMutation } from '@apollo/react-hooks';
 import { SIGNUP } from './mutations';
 import { validationErrors } from '../../utils/validationErrors';
 import { Spinner } from '../Spinner/Spinner';
@@ -36,7 +37,7 @@ export const SignUp: React.FC<IProps> = ({ onClose, show }) => {
     update(_, __) {
       reset();
       onClose();
-      handlePopup('User registered successfully');
+      handlePopup('User registered successfully. Please sign in');
     },
     onError(err: any) {
       if (err.graphQLErrors[0].extensions.exception.errorFields)

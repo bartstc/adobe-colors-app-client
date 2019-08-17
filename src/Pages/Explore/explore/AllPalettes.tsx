@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { PaletteList } from '../../../components/PaletteList/PaletteList';
 import { useQuery } from '@apollo/react-hooks';
+
+import { PaletteList } from '../../../components/PaletteList/PaletteList';
 import { SEARCH_PALETTES } from '../queries';
 import { Spinner } from '../../../components/Spinner/Spinner';
 import { usePaletteDispatch } from '../../../context/paletteContext';

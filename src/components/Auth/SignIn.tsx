@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+
 import { AuthForm, Title, Subtitle } from './Auth.styles';
 import { useForm } from '../../hooks/useForm';
 import { useAuthDispatch } from '../../context/authContext';
@@ -6,7 +8,6 @@ import { TextInputField } from '../../components/TextInputField/TextInputField';
 import { Button } from '../../components/Button/Button';
 import { IProps } from './Auth.interface';
 import { Modal } from '../Modal/Modal';
-import { useMutation } from '@apollo/react-hooks';
 import { SIGNIN } from './mutations';
 import { Spinner } from '../Spinner/Spinner';
 import { validationErrors } from '../../utils/validationErrors';

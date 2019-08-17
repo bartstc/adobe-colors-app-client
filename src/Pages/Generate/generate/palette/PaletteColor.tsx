@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Wrapper, Color, ColorName } from './PaletteColor.styles';
 import { SliderPicker } from 'react-color';
+
+import { Wrapper, Color, ColorName } from './PaletteColor.styles';
 import { randomColor } from '../../../../utils/randomColor';
 import { usePaletteDispatch } from '../../../../context/paletteContext';
 

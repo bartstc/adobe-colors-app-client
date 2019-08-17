@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { PaletteList } from '../../../components/PaletteList/PaletteList';
 import { useQuery } from '@apollo/react-hooks';
+
+import { PaletteList } from '../../../components/PaletteList/PaletteList';
 import { GET_PICKS_PALETTES } from '../queries';
 import {
   GetPicksPalettes,

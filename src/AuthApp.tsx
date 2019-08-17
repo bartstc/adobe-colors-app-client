@@ -7,7 +7,7 @@ import NotFound from './pages/NotFound/NotFound';
 import { Generate } from './pages/Generate/Generate';
 import { Explore } from './pages/Explore/Explore';
 import { Library } from './pages/Library/Library';
-import { Details } from './pages/Details/Details';
+import { DetailsPage } from './pages/DetailsPage/DetailsPage';
 
 const AuthApp: React.FC = () => (
   <BrowserRouter>
@@ -49,7 +49,7 @@ const AuthApp: React.FC = () => (
                   path="/palette/:id"
                   render={routeProps => (
                     <Page>
-                      <Details {...routeProps} />
+                      <DetailsPage {...routeProps} />
                     </Page>
                   )}
                 />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ApolloQueryResult } from 'apollo-client';
+
 import { IPalette } from '../../interfaces/Palette.interface';
 import { useAuthState } from '../../context/authContext';
 import PaletteDetails from './palette/PaletteDetails';

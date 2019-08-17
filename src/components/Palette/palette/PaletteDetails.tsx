@@ -1,5 +1,7 @@
 import React from 'react';
 import { ExecutionResult } from 'react-apollo';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+
 import {
   Wrapper,
   PaletteHeader,
@@ -14,7 +16,6 @@ import {
   ActionLink
 } from './PaletteDetails.styles';
 import { IPalette } from '../../../interfaces/Palette.interface';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 interface IProps extends IPalette, RouteComponentProps {
   isAuth: boolean | null;

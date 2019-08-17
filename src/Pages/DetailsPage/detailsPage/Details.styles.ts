@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { device, color, fontWeight } from '../../utils/styles';
 import chroma from 'chroma-js';
+import { device, color, fontWeight } from '../../../utils/styles';
 
 export const Wrapper = styled.section`
   padding: 60px 0;
@@ -65,10 +65,14 @@ export const PanelTitle = styled.h2`
     font-size: 1.1rem;
     margin-top: 0;
   }
+
+  span {
+    font-weight: ${fontWeight.semiBold};
+  }
 `;
 
 export const Color = styled.div`
-  background: blue;
+  background: ${(props: { color: string }) => props.color};
   margin-bottom: 1em;
   display: flex;
   flex-direction: column;
@@ -89,15 +93,4 @@ export const ColorName = styled.p`
   font-size: 1.3rem;
   color: ${(props: { color: string }) =>
     chroma(props.color).luminance() <= 0.08 ? color.white : color.black};
-`;
-
-export const SaveBtn = styled.button`
-  line-height: 2rem;
-  font-size: 1.1rem;
-  font-weight: ${fontWeight.semiBold};
-  color: ${color.grey};
-  background: none;
-  border: none;
-  padding: 0 0.8em;
-  cursor: pointer;
 `;

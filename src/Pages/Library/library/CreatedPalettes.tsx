@@ -1,6 +1,7 @@
 import React from 'react';
-import { PaletteList } from '../../../components/PaletteList/PaletteList';
 import { useQuery } from '@apollo/react-hooks';
+
+import { PaletteList } from '../../../components/PaletteList/PaletteList';
 import { GET_USER_PALETTES } from '../queries';
 import { GetUserPalettes } from '../../../schema/GetUserPalettes';
 import { Spinner } from '../../../components/Spinner/Spinner';
