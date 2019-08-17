@@ -45,87 +45,11 @@ export const PanelContent = styled.div`
   }
 `;
 
-export const Links = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 0.5em;
-  width: 200px;
-
-  @media ${device.tablet} {
-    margin-top: 0;
-    padding-left: 0.8em;
-    margin-left: 1.2em;
-    border-left: 1px solid ${color.grey};
-  }
-`;
-
-export const Filter = styled.button`
-  line-height: 2rem;
-  font-size: 1.1rem;
-  font-weight: ${fontWeight.semiBold};
-  color: ${color.grey};
-  background: none;
-  border: none;
-  padding: 0 0.8em;
-  cursor: pointer;
-`;
-
-export const ListTitle = styled.h2`
-  font-size: 1.2rem;
-  margin-bottom: 0.75em;
-
-  @media ${device.mobileL} {
-    font-size: 1.4rem;
-  }
-`;
-
 export const Warning = styled.p`
   font-size: 0.9rem;
   color: ${color.grey};
 
   @media ${device.tablet} {
     font-size: 1rem;
-  }
-`;
-
-export const ListWrapper = styled.div`
-  padding: 0 0.5em;
-  max-width: 500px;
-  margin: 0 auto;
-  padding-top: 2em;
-
-  @media ${device.tablet} {
-    padding: 0 1em;
-    padding-top: 3.5em;
-    max-width: 100%;
-  }
-
-  @media ${device.laptopL} {
-    padding: 0;
-    padding-top: 3.5em;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-`;
-
-export const Palettes = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
-
-  grid-row-gap: 1.8em;
-
-  @media ${device.tablet} {
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 1.4em;
-  }
-
-  @media ${device.laptop} {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media ${device.laptopL} {
-    grid-template-columns: repeat(4, 1fr);
   }
 `;

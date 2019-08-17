@@ -4,10 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetPicksPalettes
+// GraphQL query operation: GetUserPalettes
 // ====================================================
 
-export interface GetPicksPalettes_getPicksPalettes {
+export interface GetUserPalettes_getUserPalettes {
   id: string;
   name: string;
   colors: string[];
@@ -18,13 +18,8 @@ export interface GetPicksPalettes_getPicksPalettes {
   views: number;
 }
 
-export interface GetPicksPalettes {
-  getPicksPalettes: GetPicksPalettes_getPicksPalettes[] | null;
-}
-
-export interface GetPicksPalettesVariables {
-  limit: number;
-  offset: number;
+export interface GetUserPalettes {
+  getUserPalettes: GetUserPalettes_getUserPalettes[] | null;
 }
 
 /* tslint:disable */

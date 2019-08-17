@@ -4,27 +4,15 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetPicksPalettes
+// GraphQL mutation operation: SavePalette
 // ====================================================
 
-export interface GetPicksPalettes_getPicksPalettes {
+export interface SavePalette {
+  savePalette: boolean;
+}
+
+export interface SavePaletteVariables {
   id: string;
-  name: string;
-  colors: string[];
-  tags: string;
-  ownerusername: string;
-  ownerid: string;
-  saves: number;
-  views: number;
-}
-
-export interface GetPicksPalettes {
-  getPicksPalettes: GetPicksPalettes_getPicksPalettes[] | null;
-}
-
-export interface GetPicksPalettesVariables {
-  limit: number;
-  offset: number;
 }
 
 /* tslint:disable */

@@ -47,12 +47,6 @@ const paletteReducer: React.Reducer<IState, IAction> = (
         palettes: payload.palettes
       };
 
-    case 'LOADING':
-      return {
-        ...state,
-        loading: true
-      };
-
     default: {
       throw new Error(`Unhandled action type: ${type}`);
     }

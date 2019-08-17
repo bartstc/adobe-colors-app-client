@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { fontWeight, color } from '../../utils/styles';
+import { fontWeight, color } from '../../../utils/styles';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.li``;
 
@@ -65,6 +66,26 @@ export const Color = styled.div`
 export const ActionBtn = styled.button`
   background: transparent;
   border: none;
+  display: flex;
+  align-items: center;
+  padding: 0.3em 0.6em;
+  margin: 0 0.4em;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.15s ease-in-out;
+  font-weight: ${fontWeight.semiBold};
+  cursor: pointer;
+
+  i {
+    margin-right: 0.4em;
+    font-size: 1.2rem;
+  }
+
+  &:hover {
+    color: ${color.white};
+  }
+`;
+
+export const ActionLink = styled(Link)`
   display: flex;
   align-items: center;
   padding: 0.3em 0.6em;

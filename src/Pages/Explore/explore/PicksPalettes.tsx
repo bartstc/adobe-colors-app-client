@@ -35,7 +35,6 @@ export const PicksPalettes: React.FC<IProps> = ({
     },
     onCompleted() {
       if (data && !loading) {
-        console.log(data);
         dispatch({
           type: 'SET_PALETTES',
           payload: {
@@ -53,5 +52,11 @@ export const PicksPalettes: React.FC<IProps> = ({
 
   if (!data || !data.getPicksPalettes || loading) return <Spinner />;
 
-  return <PaletteList loading={loading} palettes={data.getPicksPalettes} />;
+  return (
+    <PaletteList
+      loading={loading}
+      palettes={data.getPicksPalettes}
+      refetch={refetch}
+    />
+  );
 };

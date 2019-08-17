@@ -4,26 +4,15 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetAllPalettes
+// GraphQL mutation operation: RemovePalette
 // ====================================================
 
-export interface GetAllPalettes_getAllPalettes {
+export interface RemovePalette {
+  removePalette: boolean;
+}
+
+export interface RemovePaletteVariables {
   id: string;
-  name: string;
-  colors: string[];
-  tags: string;
-  ownerusername: string;
-  saves: number;
-  views: number;
-}
-
-export interface GetAllPalettes {
-  getAllPalettes: GetAllPalettes_getAllPalettes[] | null;
-}
-
-export interface GetAllPalettesVariables {
-  limit: number;
-  offset: number;
 }
 
 /* tslint:disable */

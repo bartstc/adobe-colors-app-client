@@ -37,7 +37,6 @@ export const AllPalettes: React.FC<IProps> = ({
       query
     },
     onCompleted() {
-      console.log(data);
       if (data && !loading) {
         dispatch({
           type: 'SET_PALETTES',
@@ -56,5 +55,11 @@ export const AllPalettes: React.FC<IProps> = ({
 
   if (!data || !data.searchPalettes || loading) return <Spinner />;
 
-  return <PaletteList loading={loading} palettes={data.searchPalettes} />;
+  return (
+    <PaletteList
+      loading={loading}
+      palettes={data.searchPalettes}
+      refetch={refetch}
+    />
+  );
 };

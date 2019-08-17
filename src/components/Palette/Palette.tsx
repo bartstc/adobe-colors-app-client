@@ -1,58 +1,115 @@
 import React from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import { ApolloQueryResult } from 'apollo-client';
+import { IPalette } from '../../interfaces/Palette.interface';
+import { useAuthState } from '../../context/authContext';
+import PaletteDetails from './palette/PaletteDetails';
 import {
-  Wrapper,
-  PaletteHeader,
-  PaletteTitle,
-  PaletteInfo,
-  Info,
-  InfoText,
-  Colors,
-  Color,
-  ActionPanel,
-  ActionBtn
-} from './Palette.styles';
+  SAVE_PALETTE,
+  REMOVE_PALETTE,
+  REMOVE_SAVED_PALETTE,
+  INCREMENT_SAVES
+} from './mutations';
+import { usePopup } from '../../hooks/usePopup';
+import { Popup } from '../Popup/Popup';
+import {
+  RemovePalette,
+  RemovePaletteVariables
+} from '../../schema/RemovePalette';
+import {
+  RemoveSavedPalette,
+  RemoveSavedPaletteVariables
+} from '../../schema/RemoveSavedPalette';
+import { SavePalette, SavePaletteVariables } from '../../schema/SavePalette';
+import {
+  IncrementSaves,
+  IncrementSavesVariables
+} from '../../schema/IncrementSaves';
 
-interface IProps {
-  id: string;
-  name: string;
-  colors: string[];
-  tags: string;
-  ownerusername: string;
-  saves: number;
-  views: number;
+interface IProps extends IPalette {
+  refetch: () => Promise<ApolloQueryResult<any>>;
 }
 
-export const Palette: React.FC<IProps> = ({ name, colors, saves, views }) => {
+export const Palette: React.FC<IProps> = props => {
+  const { id: userId, isAuth } = useAuthState();
+  const { handlePopup, show, errorMsg } = usePopup();
+  const { refetch, id } = props;
+
+  const [incrementSaves] = useMutation<IncrementSaves, IncrementSavesVariables>(
+    INCREMENT_SAVES,
+    {
+      onError(err) {
+        if (err) handlePopup('Palette not found');
+      },
+      variables: {
+        id
+      },
+      update(_, __) {
+        if (refetch) refetch();
+      }
+    }
+  );
+
+  const [savePalette] = useMutation<SavePalette, SavePaletteVariables>(
+    SAVE_PALETTE,
+    {
+      onError(err) {
+        if (err) handlePopup('Palette is already saved');
+      },
+      variables: {
+        id
+      },
+      update(_, __) {
+        incrementSaves();
+        handlePopup('Palette saved successfully');
+        if (refetch) refetch();
+      }
+    }
+  );
+
+  const [removeSavedPalette] = useMutation<
+    RemoveSavedPalette,
+    RemoveSavedPaletteVariables
+  >(REMOVE_SAVED_PALETTE, {
+    onError(err) {
+      if (err) handlePopup('Palette not found');
+    },
+    variables: {
+      id
+    },
+    update(_, __) {
+      handlePopup('Palette removed from saved palettes');
+      if (refetch) refetch();
+    }
+  });
+
+  const [removePalette] = useMutation<RemovePalette, RemovePaletteVariables>(
+    REMOVE_PALETTE,
+    {
+      onError(err) {
+        if (err) handlePopup();
+      },
+      variables: {
+        id
+      },
+      update(_, __) {
+        handlePopup('Palette removed successfully');
+        if (refetch) refetch();
+      }
+    }
+  );
+
   return (
-    <Wrapper>
-      <PaletteHeader>
-        <PaletteTitle>{name}</PaletteTitle>
-        <PaletteInfo>
-          <Info>
-            <i className="fas fa-cloud-download-alt" />
-            <InfoText>{saves}</InfoText>
-          </Info>
-          <Info>
-            <i className="fas fa-eye" />
-            <InfoText>{views}</InfoText>
-          </Info>
-        </PaletteInfo>
-      </PaletteHeader>
-      <Colors>
-        <ActionPanel>
-          <ActionBtn>
-            <i className="fas fa-eye" />
-            View
-          </ActionBtn>
-          <ActionBtn>
-            <i className="fas fa-cloud-download-alt" />
-            Save
-          </ActionBtn>
-        </ActionPanel>
-        {colors.map((color, id) => (
-          <Color key={id} color={color} />
-        ))}
-      </Colors>
-    </Wrapper>
+    <>
+      <Popup show={show} message={errorMsg} />
+      <PaletteDetails
+        {...props}
+        isAuth={isAuth}
+        userId={userId}
+        savePalette={savePalette}
+        removePalette={removePalette}
+        removeSavedPalette={removeSavedPalette}
+      />
+    </>
   );
 };

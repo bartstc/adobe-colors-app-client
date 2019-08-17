@@ -13,6 +13,7 @@ export interface GetBestPalettes_getBestPalettes {
   colors: string[];
   tags: string;
   ownerusername: string;
+  ownerid: string;
   saves: number;
   views: number;
 }

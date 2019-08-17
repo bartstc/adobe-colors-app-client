@@ -4,6 +4,7 @@ export interface IPalette {
   colors: string[];
   tags: string;
   ownerusername: string;
+  ownerid: string;
   saves: number;
   views: number;
 }

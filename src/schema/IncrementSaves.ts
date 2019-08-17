@@ -4,27 +4,15 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetPicksPalettes
+// GraphQL mutation operation: IncrementSaves
 // ====================================================
 
-export interface GetPicksPalettes_getPicksPalettes {
+export interface IncrementSaves {
+  incrementSaves: boolean;
+}
+
+export interface IncrementSavesVariables {
   id: string;
-  name: string;
-  colors: string[];
-  tags: string;
-  ownerusername: string;
-  ownerid: string;
-  saves: number;
-  views: number;
-}
-
-export interface GetPicksPalettes {
-  getPicksPalettes: GetPicksPalettes_getPicksPalettes[] | null;
-}
-
-export interface GetPicksPalettesVariables {
-  limit: number;
-  offset: number;
 }
 
 /* tslint:disable */

@@ -45,7 +45,7 @@ export const PanelContent = styled.div`
   }
 `;
 
-export const Actions = styled.nav`
+export const Actions = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;

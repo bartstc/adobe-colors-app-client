@@ -1,19 +1,5 @@
 import gql from 'graphql-tag';
 
-export const GET_ALL_PALETTES = gql`
-  query GetAllPalettes($limit: Int!, $offset: Int!) {
-    getAllPalettes(limit: $limit, offset: $offset) {
-      id
-      name
-      colors
-      tags
-      ownerusername
-      saves
-      views
-    }
-  }
-`;
-
 export const GET_PICKS_PALETTES = gql`
   query GetPicksPalettes($limit: Int!, $offset: Int!) {
     getPicksPalettes(limit: $limit, offset: $offset) {
@@ -22,6 +8,7 @@ export const GET_PICKS_PALETTES = gql`
       colors
       tags
       ownerusername
+      ownerid
       saves
       views
     }
@@ -36,6 +23,7 @@ export const GET_BEST_PALETTES = gql`
       colors
       tags
       ownerusername
+      ownerid
       saves
       views
     }
@@ -50,6 +38,7 @@ export const SEARCH_PALETTES = gql`
       colors
       tags
       ownerusername
+      ownerid
       saves
       views
     }

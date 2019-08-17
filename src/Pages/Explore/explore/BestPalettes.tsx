@@ -35,7 +35,6 @@ export const BestPalettes: React.FC<IProps> = ({
     },
     onCompleted() {
       if (data && !loading) {
-        console.log(data);
         dispatch({
           type: 'SET_PALETTES',
           payload: {
@@ -53,5 +52,11 @@ export const BestPalettes: React.FC<IProps> = ({
 
   if (!data || !data.getBestPalettes || loading) return <Spinner />;
 
-  return <PaletteList loading={loading} palettes={data.getBestPalettes} />;
+  return (
+    <PaletteList
+      loading={loading}
+      palettes={data.getBestPalettes}
+      refetch={refetch}
+    />
+  );
 };
