@@ -18,3 +18,9 @@ export const SIGNIN = gql`
     }
   }
 `;
+
+export const DELETE_USER = gql`
+  mutation DeleteUser {
+    deleteUser
+  }
+`;

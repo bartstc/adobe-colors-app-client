@@ -18,7 +18,7 @@ const initState = {
   password: ''
 };
 
-export const SignIn: React.FC<IProps> = ({ onClose, show }) => {
+export const SignIn: React.FC<IProps> = ({ onClose, showModal }) => {
   const dispatch = useAuthDispatch();
   const [errors, setErrors] = useState([]);
 
@@ -52,7 +52,7 @@ export const SignIn: React.FC<IProps> = ({ onClose, show }) => {
 
   return (
     <>
-      <Modal show={show} closeModal={onCloseModal}>
+      <Modal show={showModal} closeModal={onCloseModal}>
         <AuthForm onSubmit={handleSubmit}>
           <Title>Sign In</Title>
           <Subtitle>Sign into your account here.</Subtitle>
@@ -75,7 +75,7 @@ export const SignIn: React.FC<IProps> = ({ onClose, show }) => {
             onChange={handleChange}
             error={validationErrors(errors, 'password')}
           />
-          {loading ? <Spinner /> : <Button type="submit">Sign Up</Button>}
+          {loading ? <Spinner /> : <Button type="submit">Sign In</Button>}
         </AuthForm>
       </Modal>
     </>

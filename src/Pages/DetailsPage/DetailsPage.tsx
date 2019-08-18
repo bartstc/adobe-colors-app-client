@@ -11,7 +11,6 @@ import {
   IncrementViews
 } from '../../schema/IncrementViews';
 import { INCREMENT_VIEWS } from './mutations';
-import { Spinner } from '../../components/Spinner/Spinner';
 import { Details } from './detailsPage/Details';
 
 type TParams = { id: string };
@@ -50,12 +49,10 @@ export const DetailsPage: React.FC<IProps> = ({ match }) => {
     }
   );
 
-  if (loading || !data) return <Spinner />;
-
   return (
     <>
       <Popup show={show} message={errorMsg} />
-      <Details {...data.getPalette} />
+      <Details data={data} loading={loading} handlePopup={handlePopup} />
     </>
   );
 };

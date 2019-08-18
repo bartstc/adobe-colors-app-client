@@ -19,6 +19,7 @@ export const Title = styled.h2`
   font-size: 1.45rem;
   font-weight: ${fontWeight.semiBold};
   border-bottom: 1px solid ${color.black};
+  text-transform: uppercase;
   line-height: 2em;
   width: 100%;
   text-align: center;
@@ -34,11 +35,10 @@ export const Subtitle = styled.p`
   line-height: 1em;
   margin-bottom: 0.8em;
   text-align: center;
-  max-width: 280px;
+  width: 100%;
 
   @media ${device.tablet} {
     font-size: 1.1rem;
-    max-width: 370px;
     margin-top: 1.5em;
   }
 `;

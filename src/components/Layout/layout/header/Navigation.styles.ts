@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
-import { device, color, fontWeight } from '../../../utils/styles';
+import { device, color, fontWeight } from '../../../../utils/styles';
 
 export const HeaderWrapper = styled.header`
   width: 100%;

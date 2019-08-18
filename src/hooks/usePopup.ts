@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const usePopup = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -9,11 +9,15 @@ export const usePopup = () => {
   ) => {
     setShow(true);
     setErrorMsg(message);
-    setTimeout(() => {
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
       setShow(false);
       setErrorMsg('');
     }, 4000);
-  };
+    return () => clearTimeout(timer);
+  }, [show]);
 
   return { handlePopup, show, errorMsg };
 };

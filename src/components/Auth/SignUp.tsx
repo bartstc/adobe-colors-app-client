@@ -12,6 +12,7 @@ import { validationErrors } from '../../utils/validationErrors';
 import { Spinner } from '../Spinner/Spinner';
 import { Popup } from '../Popup/Popup';
 import { Signup, SignupVariables } from '../../schema/Signup';
+import { usePopup } from '../../hooks/usePopup';
 
 const initState = {
   username: '',
@@ -19,10 +20,9 @@ const initState = {
   password: ''
 };
 
-export const SignUp: React.FC<IProps> = ({ onClose, show }) => {
+export const SignUp: React.FC<IProps> = ({ onClose, showModal }) => {
+  const { handlePopup, show, errorMsg } = usePopup();
   const [errors, setErrors] = useState([]);
-  const [showPopup, setShowPopup] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
 
   const { handleChange, handleSubmit, reset, values } = useForm(() => {
     onSubmit();
@@ -56,18 +56,10 @@ export const SignUp: React.FC<IProps> = ({ onClose, show }) => {
     reset();
   };
 
-  const handlePopup = (message: string) => {
-    setShowPopup(true);
-    setErrorMsg(message);
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 4000);
-  };
-
   return (
     <>
-      <Popup show={showPopup} message={errorMsg} />
-      <Modal show={show} closeModal={onCloseModal}>
+      <Popup show={show} message={errorMsg} />
+      <Modal show={showModal} closeModal={onCloseModal}>
         <AuthForm onSubmit={handleSubmit}>
           <Title>Sign Up</Title>
           <Subtitle>Sign up to collect your color.</Subtitle>

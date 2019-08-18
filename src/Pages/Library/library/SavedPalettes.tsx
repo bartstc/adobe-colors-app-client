@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { PaletteList } from '../../../components/PaletteList/PaletteList';
 import { GET_SAVED_PALETTES } from '../queries';
@@ -19,6 +19,11 @@ export const SavedPalettes: React.FC<IProps> = ({ handlePopup }) => {
       }
     }
   );
+
+  useEffect(() => {
+    if (refetch) refetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!data || !data.getSavedPalettes || loading) return <Spinner />;
 

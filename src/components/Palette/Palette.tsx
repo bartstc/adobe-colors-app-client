@@ -11,8 +11,6 @@ import {
   REMOVE_SAVED_PALETTE,
   INCREMENT_SAVES
 } from './mutations';
-import { usePopup } from '../../hooks/usePopup';
-import { Popup } from '../Popup/Popup';
 import {
   RemovePalette,
   RemovePaletteVariables
@@ -29,12 +27,13 @@ import {
 
 interface IProps extends IPalette {
   refetch: () => Promise<ApolloQueryResult<any>>;
+  handlePopup: (msg?: string) => void;
 }
 
 export const Palette: React.FC<IProps> = props => {
   const { id: userId, isAuth } = useAuthState();
-  const { handlePopup, show, errorMsg } = usePopup();
-  const { refetch, id } = props;
+
+  const { refetch, id, handlePopup } = props;
 
   const [incrementSaves] = useMutation<IncrementSaves, IncrementSavesVariables>(
     INCREMENT_SAVES,
@@ -62,7 +61,7 @@ export const Palette: React.FC<IProps> = props => {
       },
       update(_, __) {
         incrementSaves();
-        handlePopup('Palette saved successfully');
+        handlePopup('Palette saved. Check your library');
         if (refetch) refetch();
       }
     }
@@ -79,7 +78,6 @@ export const Palette: React.FC<IProps> = props => {
       id
     },
     update(_, __) {
-      handlePopup('Palette removed from saved palettes');
       if (refetch) refetch();
     }
   });
@@ -94,7 +92,7 @@ export const Palette: React.FC<IProps> = props => {
         id
       },
       update(_, __) {
-        handlePopup('Palette removed successfully');
+        handlePopup('Palette deleted successfully');
         if (refetch) refetch();
       }
     }
@@ -102,7 +100,6 @@ export const Palette: React.FC<IProps> = props => {
 
   return (
     <>
-      <Popup show={show} message={errorMsg} />
       <PaletteDetails
         {...props}
         isAuth={isAuth}

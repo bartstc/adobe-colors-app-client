@@ -50,6 +50,7 @@ export const Colors = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 0.2em;
   height: 45px;
   border-radius: 10px;
   overflow: hidden;

@@ -1,96 +1,44 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import {
-  HeaderWrapper,
-  Logo,
-  LogoTitle,
-  Nav,
-  Hamburger,
-  Bar,
-  NavList,
-  NavItem,
-  PageLink,
-  AuthBtn,
-  SettingsBtn
-} from './Header.styles';
-import { authLinks, unauthLinks } from '../../../utils/links';
-import { useAuthDispatch, useAuthState } from '../../../context/authContext';
+import { useAuthDispatch } from '../../../context/authContext';
+import { useMutation } from '@apollo/react-hooks';
+import { LogoutUser } from '../../../schema/LogoutUser';
+import { LOGOUT_USER } from '../mutations';
+import { usePopup } from '../../../hooks/usePopup';
+import { Popup } from '../../Popup/Popup';
+import { Navigation } from './header/Navigation';
 
 interface IProps extends RouteComponentProps<any> {
   toggled: boolean;
   onToggle: () => void;
   onSignUpToggle: () => void;
   onSignInToggle: () => void;
+  onAuthOptionsToggle: () => void;
 }
 
-const Header: React.FC<IProps> = ({
-  onToggle,
-  onSignUpToggle,
-  onSignInToggle,
-  toggled,
-  history
-}) => {
+const Header: React.FC<IProps> = props => {
   const dispatch = useAuthDispatch();
-  const { isAuth } = useAuthState();
+  const { handlePopup, show, errorMsg } = usePopup();
+
+  const [logoutUser] = useMutation<LogoutUser>(LOGOUT_USER, {
+    onError(err) {
+      if (err) handlePopup();
+    }
+  });
 
   const onLogout = async () => {
+    await logoutUser();
     localStorage.removeItem('jwtToken');
+    props.history.push('/');
     dispatch({ type: 'LOGOUT_USER' });
-    history.push('/');
   };
 
   return (
-    <HeaderWrapper>
-      <Logo to="/">
-        <LogoTitle>Adobe Colors Clone</LogoTitle>
-      </Logo>
-      <Nav>
-        <Hamburger aria-label="open menu" title="Menu" onClick={onToggle}>
-          <Bar toggled={toggled} />
-          <Bar toggled={toggled} />
-          <Bar toggled={toggled} />
-          <Bar toggled={toggled} />
-        </Hamburger>
-        <NavList>
-          {isAuth
-            ? authLinks.map(({ path, name }) => (
-                <NavItem key={path}>
-                  <PageLink exact to={path}>
-                    {name}
-                  </PageLink>
-                </NavItem>
-              ))
-            : unauthLinks.map(({ path, name }) => (
-                <NavItem key={path}>
-                  <PageLink exact to={path}>
-                    {name}
-                  </PageLink>
-                </NavItem>
-              ))}
-        </NavList>
-        <NavList>
-          {isAuth && (
-            <NavItem>
-              <AuthBtn onClick={onLogout}>Logout</AuthBtn>
-            </NavItem>
-          )}
-          {!isAuth && (
-            <NavItem>
-              <AuthBtn onClick={onSignInToggle}>Sign In</AuthBtn>
-            </NavItem>
-          )}
-          {!isAuth && (
-            <NavItem>
-              <AuthBtn onClick={onSignUpToggle}>Sign Up</AuthBtn>
-            </NavItem>
-          )}
-        </NavList>
-        <SettingsBtn>
-          <i className="fas fa-cog" />
-        </SettingsBtn>
-      </Nav>
-    </HeaderWrapper>
+    <>
+      <Popup show={show} message={errorMsg} />
+      <Navigation {...props} onLogout={onLogout} />
+    </>
   );
 };
 

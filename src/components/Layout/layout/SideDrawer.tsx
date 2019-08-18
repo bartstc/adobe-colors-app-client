@@ -10,6 +10,7 @@ interface IProps extends RouteComponentProps<any> {
   onClose: () => void;
   onSignUpToggle: () => void;
   onSignInToggle: () => void;
+  onAuthOptionsToggle: () => void;
 }
 
 const SideDrawer: React.FC<IProps> = ({
@@ -17,7 +18,8 @@ const SideDrawer: React.FC<IProps> = ({
   onClose,
   history,
   onSignUpToggle,
-  onSignInToggle
+  onSignInToggle,
+  onAuthOptionsToggle
 }) => {
   const dispatch = useAuthDispatch();
   const { isAuth } = useAuthState();
@@ -45,7 +47,7 @@ const SideDrawer: React.FC<IProps> = ({
         {!isAuth && <Btn onClick={onSignInToggle}>Sign In</Btn>}
         {!isAuth && <Btn onClick={onSignUpToggle}>Sign Up</Btn>}
         {isAuth && <Btn onClick={onLogout}>Logout</Btn>}
-        <Btn>Settings</Btn>
+        {isAuth && <Btn onClick={onAuthOptionsToggle}>Settings</Btn>}
       </Links>
     </Wrapper>
   );

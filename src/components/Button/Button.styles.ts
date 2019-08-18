@@ -13,6 +13,7 @@ export const ButtonWrapper = styled.button`
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
+  border-radius: 8px;
 
   &:hover {
     background: ${color.white};
