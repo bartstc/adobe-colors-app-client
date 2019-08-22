@@ -18,7 +18,6 @@ export const Panel = styled.div`
   @media ${device.tablet} {
     height: 60px;
     padding: 0 1em;
-    border-bottom: 1px solid ${color.grey};
     flex-direction: row;
     justify-content: space-between;
   }

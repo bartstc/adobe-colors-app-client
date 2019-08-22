@@ -21,7 +21,10 @@ const errorLink = onError(({ graphQLErrors, networkError, operation }) => {
 
 export const createClient = () => {
   const httpLink = new HttpLink({
-    uri: 'http://localhost:4000/graphql',
+    uri:
+      process.env.NODE_ENV === 'production'
+        ? 'https://react-adobe-color-clone.herokuapp.com/graphql'
+        : 'http://localhost:4000/graphql',
     credentials: 'include'
   });
 
