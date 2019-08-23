@@ -96,5 +96,3 @@ const useAuthDispatch = () => {
 };
 
 export { AuthProvider, useAuthState, useAuthDispatch };
-
-// for run with docker: change proxy in package.json: "proxy": "http://192.168.99.100:5000/",
